@@ -257,7 +257,7 @@ bool MTreeSelection::Write(){
 			TParameter<Long64_t>* current_cut = (TParameter<Long64_t>*)cut_tracker_obj_p->At(cut_i);
 			current_cut->SetVal(cut_tracker.at(current_cut->GetName()));
 		}
-		cut_tracker_obj_p->Write("cut_tracker",TObject::kOverwrite&&TObject::kSingleKey);
+		cut_tracker_obj_p->Write("cut_tracker",TObject::kOverwrite & TObject::kSingleKey);
 	}
 	// write out the MTreeCuts saving which entries passed each cut
 	for(auto&& acut : cut_pass_entries){

@@ -8,10 +8,13 @@ CXXFLAGS    = -g -std=c++11 -Wall -fdiagnostics-color=always -Wno-reorder -Wno-s
 
 
 LIBS = -lSkroot -latmpdroot  -lDataDefinition  -lidod_xtlk_root  -lloweroot  -lmcinfo  -lsofttrgroot  -ltqrealroot
-LDFLAGS += -L/home/moflaher/skrootlibs $(LIBS)
-CPPFLAGS += -I/home/moflaher/skrootlibs/include -I/home/moflaher/skrootlibs/include/include -I/home/moflaher/skrootlibs/include/managers
+LDFLAGS += -L/disk03/lowe12/warwick/skrootlibs $(LIBS)
+CPPFLAGS += -I/disk03/lowe12/warwick/skrootlibs/include -I/disk03/lowe12/warwick/skrootlibs/include/include -I/disk03/lowe12/warwick/skrootlibs/include/managers
 
-all: demo
+all: print_cuts draw_distros
 
-demo: src/print_selections.cpp src/MTreeCut.cpp src/MTreeSelection.cpp src/MTreeReader.cpp src/Constants.cpp
+print_cuts: src/print_selections.cpp src/MTreeCut.cpp src/MTreeSelection.cpp src/MTreeReader.cpp src/Constants.cpp
 	g++ $(CXXFLAGS) $(CPPFLAGS) $(LDFLAGS) $^ -o print_selections
+
+draw_distros: src/draw_distributions.cpp
+	g++ $(CXXFLAGS) $(CPPFLAGS) $(LDFLAGS) $^ -o draw_distributions
